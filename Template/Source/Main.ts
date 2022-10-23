@@ -1,16 +1,66 @@
 namespace Template {
-  export import ƒ = FudgeCore;
-  export import ƒS = FudgeStory;
+    export import ƒ = FudgeCore;
+    export import ƒS = FudgeStory;
 
-  console.log("FudgeStory template starting");
+    console.log("FudgeStory template starting");
 
-  window.addEventListener("load", start);
-  function start(_event: Event): void {
-    let scenes: ƒS.Scenes = [
-      { scene: Scene, name: "Scene" }
-    ];
+    export let dataForSave = { nameProtagonist: "" };
+    export let transition = {
+        namedertransition: {
+            duration: 1,
+            alpha: "pfad",
+            edge: 1,
+        },
+    };
 
-    // start the sequence
-    ƒS.Progress.go(scenes);
-  }
+    export let sound = {
+        //themes:
+        namedessounds: "Audio/namederdatei.mp3",
+        //sfx:
+        //voices:
+    };
+
+    export let locations = {
+        namederlocation: {
+            name: "Beach Day",
+            background: "pfad",
+        },
+        nightcity: {
+            name: "Night City",
+            background: "Images/Backgrounds/nightcity.png",
+        },
+    };
+
+    export let characters = {
+        narrator: {
+            name: "",
+        },
+        protagonist: {
+            name: "",
+        },
+        Helene: {
+            name: "Helene",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: "pfaddesbildes",
+                happy: "pfad",
+                upset: "pfad",
+            },
+        },
+    };
+
+    window.addEventListener("load", start);
+    function start(_event: Event): void {
+        // scene hierarchy
+        let scenes: ƒS.Scenes = [
+            { scene: firstScene, name: "first scene" },
+            { scene: secondScene, name: "second scene" },
+        ];
+
+        let uiElement: HTMLElement = document.querySelector("[type=interface]");
+        dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
+
+        // start the sequence
+        ƒS.Progress.go(scenes);
+    }
 }
