@@ -67,24 +67,28 @@ dialog[type="splash"] > div > div {
 
 speech {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    color: beige;
-    background-color: rgba(57, 16, 24, 0.9);
-    width: 100%;
-    height: 13%;
+    display: block;
+    padding: 20px;
+    margin: 2vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.863);
+    height: 15%;
 }
 
 speech content {
-    color: rgb(255, 203, 237);
+    color: rgb(208, 201, 211);
     font-size: 1.7vmin;
     position: absolute;
-    left: 10px;
+    left: 20px;
+    font-family: Lucida Sans, Helvetica, Arial, sans-serif
 }
   
 speech name {
     font-size: 2vmin;
+    font-family: 'DePixel', sans-serif;
     display: block;
-    color: rgb(218, 69, 171);
+    color: rgb(164, 119, 190);
     margin-bottom: 10px;
 }
