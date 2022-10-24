@@ -5,10 +5,10 @@ var Template;
     Template.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
     Template.dataForSave = { nameProtagonist: "" };
-    Template.transition = {
-        namedertransition: {
-            duration: 1,
-            alpha: "pfad",
+    Template.transitions = {
+        cloud: {
+            duration: 3,
+            alpha: "Images/Transitions/clouds.jpg",
             edge: 1,
         },
     };
@@ -40,7 +40,7 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
-                happy: "pfad",
+                happy: "Images/Characters/aisaka.png",
                 upset: "pfad",
             },
         },
@@ -79,7 +79,10 @@ var Template;
         };
         Template.ƒS.Speech.hide();
         await Template.ƒS.Location.show(Template.locations.nightcity);
-        await Template.ƒS.update(2);
+        await Template.ƒS.update(Template.transitions.cloud.duration, Template.transitions.cloud.alpha, Template.transitions.cloud.edge);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 110));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0000);
         await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
         await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);

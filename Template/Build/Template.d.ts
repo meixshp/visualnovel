@@ -4,8 +4,8 @@ declare namespace Template {
     let dataForSave: {
         nameProtagonist: string;
     };
-    let transition: {
-        namedertransition: {
+    let transitions: {
+        cloud: {
             duration: number;
             alpha: string;
             edge: number;

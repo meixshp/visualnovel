@@ -5,10 +5,10 @@ namespace Template {
     console.log("FudgeStory template starting");
 
     export let dataForSave = { nameProtagonist: "" };
-    export let transition = {
-        namedertransition: {
-            duration: 1,
-            alpha: "pfad",
+    export let transitions = {
+        cloud: {
+            duration: 3,
+            alpha: "Images/Transitions/clouds.jpg",
             edge: 1,
         },
     };
@@ -43,7 +43,7 @@ namespace Template {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
-                happy: "pfad",
+                happy: "Images/Characters/aisaka.png",
                 upset: "pfad",
             },
         },
