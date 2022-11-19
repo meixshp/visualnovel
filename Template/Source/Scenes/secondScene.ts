@@ -12,7 +12,10 @@ namespace Template {
         };
 
         ƒS.Speech.hide();
-        await ƒS.update(2);
+        await ƒS.Location.show(locations.theathre);
+        await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
+        await ƒS.Character.show(characters.Helene, characters.Helene.pose.happy, ƒS.positionPercent(20, 100));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.Helene, text.Helene.T0000);
         await ƒS.Speech.tell(characters.Helene, text.Helene.T0001);
         await ƒS.Speech.tell(characters.Helene, text.Helene.T0002);
