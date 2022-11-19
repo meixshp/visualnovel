@@ -10,12 +10,22 @@ declare namespace Template {
             alpha: string;
             edge: number;
         };
+        swirl: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        wet: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
     };
     let sound: {
-        namedessounds: string;
+        dystopia: string;
     };
     let locations: {
-        namederlocation: {
+        theathre: {
             name: string;
             background: string;
         };
@@ -40,7 +50,16 @@ declare namespace Template {
                 upset: string;
             };
         };
+        Lily: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                good: string;
+            };
+        };
     };
+    function ghostAnimation(): ƒS.AnimationDefinition;
+    function getAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
@@ -50,4 +69,7 @@ declare namespace Template {
 }
 declare namespace Template {
     function secondScene(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function thirdScene(): ƒS.SceneReturn;
 }
