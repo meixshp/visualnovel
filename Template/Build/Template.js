@@ -41,7 +41,7 @@ var Template;
         },
         supermarket: {
             name: "Supermarkt",
-            background: "Images/Backgrounds/supermarkt.jpg",
+            background: "Images/Backgrounds/supermarkt_big.jpg",
         },
     };
     Template.characters = {
