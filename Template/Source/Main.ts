@@ -28,6 +28,8 @@ namespace Template {
         dystopia: "Audio/Dystopian.ogg",
         //sfx:
         //voices:
+        supermarket_packing: "Audio/supermarket_packing.mp3",
+        conversation: "Audio/conversation.mp3"
     };
 
     export let locations = {
@@ -38,6 +40,10 @@ namespace Template {
         nightcity: {
             name: "Night City",
             background: "Images/Backgrounds/nightcity.png",
+        },
+        supermarket: {
+            name: "Supermarkt",
+            background: "Images/Backgrounds/supermarkt.jpg",
         },
     };
 
@@ -162,8 +168,9 @@ namespace Template {
         buttonFunctionalities("Close");
         // scene hierarchy
         let scenes: ƒS.Scenes = [
-            { scene: firstScene, name: "first scene" },
-            { scene: secondScene, name: "second scene" },
+            //{ scene: firstScene, name: "first scene" },
+            { scene: thirdScene, name: "third scene" },
+            //{ scene: secondScene, name: "second scene" },
         ];
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");

@@ -23,6 +23,8 @@ declare namespace Template {
     };
     let sound: {
         dystopia: string;
+        supermarket_packing: string;
+        conversation: string;
     };
     let locations: {
         theathre: {
@@ -30,6 +32,10 @@ declare namespace Template {
             background: string;
         };
         nightcity: {
+            name: string;
+            background: string;
+        };
+        supermarket: {
             name: string;
             background: string;
         };

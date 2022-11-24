@@ -27,6 +27,8 @@ var Template;
         dystopia: "Audio/Dystopian.ogg",
         //sfx:
         //voices:
+        supermarket_packing: "Audio/supermarket_packing.mp3",
+        conversation: "Audio/conversation.mp3"
     };
     Template.locations = {
         theathre: {
@@ -36,6 +38,10 @@ var Template;
         nightcity: {
             name: "Night City",
             background: "Images/Backgrounds/nightcity.png",
+        },
+        supermarket: {
+            name: "Supermarkt",
+            background: "Images/Backgrounds/supermarkt.jpg",
         },
     };
     Template.characters = {
@@ -151,8 +157,9 @@ var Template;
         buttonFunctionalities("Close");
         // scene hierarchy
         let scenes = [
-            { scene: Template.firstScene, name: "first scene" },
-            { scene: Template.secondScene, name: "second scene" },
+            //{ scene: firstScene, name: "first scene" },
+            { scene: Template.thirdScene, name: "third scene" },
+            //{ scene: secondScene, name: "second scene" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -241,19 +248,21 @@ var Template;
 var Template;
 (function (Template) {
     async function thirdScene() {
-        console.log("Third Scene starting");
+        console.log("Audio  Scene starting");
         let text = {
-            Lily: {
-                T0001: "Hallo",
+            Helene: {
+                T0001: "Guten Tag!",
                 T0002: "Anderer Text",
                 T0003: "Text Nummer 3",
             }
         };
         Template.ƒS.Speech.hide();
-        await Template.ƒS.Location.show(Template.locations.theathre);
+        Template.ƒS.Sound.play(Template.sound.supermarket_packing, 1, true);
+        await Template.ƒS.Location.show(Template.locations.supermarket);
+        Template.ƒS.Sound.fade(Template.sound.conversation, 0.5, 1, true);
         await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update();
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
     }
     Template.thirdScene = thirdScene;
 })(Template || (Template = {}));
