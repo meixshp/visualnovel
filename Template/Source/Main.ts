@@ -29,7 +29,7 @@ namespace Template {
         //sfx:
         //voices:
         supermarket_packing: "Audio/supermarket_packing.mp3",
-        conversation: "Audio/conversation.mp3"
+        conversation: "Audio/conversation.mp3",
     };
 
     export let locations = {
@@ -64,10 +64,10 @@ namespace Template {
             },
         },
         Lily: {
-            name: "Lily",
+            name: "Kassiererin",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "pfad",
+                good: "Images/Characters/kohana.png",
             },
         },
     };
@@ -104,6 +104,21 @@ namespace Template {
                 color: ƒS.Color.CSS("red"),
             },
             duration: 1,
+            playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+
+    export function slideInAnimation(): ƒS.AnimationDefinition {
+        return {
+            start: {
+                translation: ƒS.positionPercent(0, 100),
+                color: ƒS.Color.CSS("white", 0),
+            },
+            end: {
+                translation: ƒS.positionPercent(30, 100),
+                color: ƒS.Color.CSS("white", 1),
+            },
+            duration: 2,
             playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }

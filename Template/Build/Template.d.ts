@@ -66,6 +66,7 @@ declare namespace Template {
     };
     function ghostAnimation(): ƒS.AnimationDefinition;
     function getAnimation(): ƒS.AnimationDefinition;
+    function slideInAnimation(): ƒS.AnimationDefinition;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;

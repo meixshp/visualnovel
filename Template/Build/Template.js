@@ -28,7 +28,7 @@ var Template;
         //sfx:
         //voices:
         supermarket_packing: "Audio/supermarket_packing.mp3",
-        conversation: "Audio/conversation.mp3"
+        conversation: "Audio/conversation.mp3",
     };
     Template.locations = {
         theathre: {
@@ -61,10 +61,10 @@ var Template;
             },
         },
         Lily: {
-            name: "Lily",
+            name: "Kassiererin",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "pfad",
+                good: "Images/Characters/kohana.png",
             },
         },
     };
@@ -103,6 +103,21 @@ var Template;
         };
     }
     Template.getAnimation = getAnimation;
+    function slideInAnimation() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(0, 100),
+                color: Template.ƒS.Color.CSS("white", 0),
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(30, 100),
+                color: Template.ƒS.Color.CSS("white", 1),
+            },
+            duration: 2,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+    Template.slideInAnimation = slideInAnimation;
     // MENU SHORTCUTS ----------------------------------------
     let inGameMenuButtons = {
         save: "Save",
@@ -252,8 +267,15 @@ var Template;
         let text = {
             Helene: {
                 T0001: "Guten Tag!",
-                T0002: "Anderer Text",
-                T0003: "Text Nummer 3",
+                T0002: "Mit Karte bitte.",
+                T0003: "Den Kassenzettel brauche ich nicht, danke.",
+                T0004: "Tschüüüüss!"
+            },
+            Kassiererin: {
+                T0001: "Hallo!",
+                T0002: "Das macht einmal 783,29 Yen bitte.",
+                T0003: "Kassenzettel?",
+                T0004: "Schönen Tag noch!"
             }
         };
         Template.ƒS.Speech.hide();
@@ -261,8 +283,18 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.supermarket);
         Template.ƒS.Sound.fade(Template.sound.conversation, 0.5, 1, true);
         await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
-        await Template.ƒS.update();
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0001);
+        await Template.ƒS.Character.animate(Template.characters.Lily, Template.characters.Lily.pose.good, Template.slideInAnimation());
+        //await ƒS.Character.show(characters.Lily, characters.Lily.pose.good, ƒS.positionPercent(30, 100));
+        //await ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
     }
     Template.thirdScene = thirdScene;
 })(Template || (Template = {}));
