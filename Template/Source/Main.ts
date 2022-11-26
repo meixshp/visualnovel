@@ -45,6 +45,10 @@ namespace Template {
             name: "Supermarkt",
             background: "Images/Backgrounds/supermarkt_big.jpg",
         },
+        university: {
+            name: "University",
+            background: "Images/Backgrounds/university.png"
+        },
     };
 
     export let characters = {
