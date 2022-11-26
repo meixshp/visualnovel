@@ -39,6 +39,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        university: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
         narrator: {
@@ -67,6 +71,9 @@ declare namespace Template {
     function ghostAnimation(): ƒS.AnimationDefinition;
     function getAnimation(): ƒS.AnimationDefinition;
     function slideInAnimation(): ƒS.AnimationDefinition;
+}
+declare namespace Template {
+    function university(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
