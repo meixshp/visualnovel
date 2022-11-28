@@ -68,10 +68,10 @@ namespace Template {
             },
         },
         Lily: {
-            name: "Kassiererin",
+            name: "Lily",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "Images/Characters/kohana.png",
+                good: "Images/Characters/Lily.png",
             },
         },
     };
@@ -188,8 +188,7 @@ namespace Template {
         // scene hierarchy
         let scenes: ƒS.Scenes = [
             //{ scene: firstScene, name: "first scene" },
-            { scene: thirdScene, name: "third scene" },
-            //{ scene: secondScene, name: "second scene" },
+            { scene: university, name: "intro scene" },
         ];
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");

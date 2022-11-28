@@ -65,10 +65,10 @@ var Template;
             },
         },
         Lily: {
-            name: "Kassiererin",
+            name: "Lily",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "Images/Characters/kohana.png",
+                good: "Images/Characters/Lily.png",
             },
         },
     };
@@ -177,8 +177,7 @@ var Template;
         // scene hierarchy
         let scenes = [
             //{ scene: firstScene, name: "first scene" },
-            { scene: Template.thirdScene, name: "third scene" },
-            //{ scene: secondScene, name: "second scene" },
+            { scene: Template.university, name: "intro scene" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -189,10 +188,10 @@ var Template;
 var Template;
 (function (Template) {
     async function university() {
-        console.log("first scene: starting");
+        console.log("intro scene: starting");
         // SPEECH
         let text = {
-            Helene: {
+            Lily: {
                 T0000: "Das ist Text Nummer 1.",
                 T0001: "Das hier ist der zweite Text.",
                 T0002: "Hier kommt die Nummer drei.",
@@ -209,26 +208,31 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.university);
         //ƒS.Sound.fade(sound.dystopia, 0.5, 2, true);
         await Template.ƒS.update(Template.transitions.cloud.duration, Template.transitions.cloud.alpha, Template.transitions.cloud.edge);
-        await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Character.show(Template.characters.Lily, Template.characters.Lily.pose.good, Template.ƒS.positionPercent(70, 130));
         await Template.ƒS.update(1);
         //await ƒS.Character.animate(characters.Helene, characters.Helene.pose.happy, ghostAnimation());
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0000);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);
-        await Template.ƒS.Character.hide(Template.characters.Helene);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0002);
+        // Name Input
+        let name = await Template.ƒS.Speech.getInput();
+        Template.dataForSave.nameProtagonist = name;
+        Template.characters.protagonist.name = name;
+        await Template.ƒS.Speech.tell(Template.characters.Lily, "Hey " + Template.characters.protagonist.name + ". Das ist ein toller Name.");
+        await Template.ƒS.Character.hide(Template.characters.Lily);
         let dialogueElement = await Template.ƒS.Menu.getInput(dialog, "userOptions");
         switch (dialogueElement) {
             case dialog.O1:
                 console.log("Option 1");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0004);
                 break;
             case dialog.O2:
                 console.log("Option 2");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0003);
+                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0003);
                 break;
             case dialog.O3:
                 console.log("Option 3");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0004);
                 break;
         }
     }
@@ -332,7 +336,7 @@ var Template;
         };
         Template.ƒS.Speech.hide();
         Template.ƒS.Sound.play(Template.sound.supermarket_packing, 1, true);
-        await Template.ƒS.Location.show(Template.locations.university);
+        await Template.ƒS.Location.show(Template.locations.supermarket);
         Template.ƒS.Sound.fade(Template.sound.conversation, 0.5, 1, true);
         await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update(1);

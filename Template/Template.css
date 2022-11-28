@@ -13,15 +13,15 @@ html, body {
 }
 
 scene {
-    width: 100vw;
-    height: 100vh;
+    width: 1280px;
+    height: 720px;
     display: inline-block;
-    position: absolute;
+    position: static;
 }
 
 canvas {
     min-width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 /* SPLASH SCREEN */
