@@ -4,7 +4,7 @@ namespace Template {
 
         // SPEECH
         let text = {
-            Helene: {
+            Amelie: {
                 T0000: "Das ist Text Nummer 1.",
                 T0001: "Das hier ist der zweite Text.",
                 T0002: "Hier kommt die Nummer drei.",
@@ -24,28 +24,28 @@ namespace Template {
         await ƒS.Location.show(locations.nightcity);
         //ƒS.Sound.fade(sound.dystopia, 0.5, 2, true);
         await ƒS.update(transitions.cloud.duration, transitions.cloud.alpha, transitions.cloud.edge);
-        await ƒS.Character.show(characters.Helene, characters.Helene.pose.happy, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.Amelie, characters.Amelie.pose.happy, ƒS.positionPercent(70, 100));
         await ƒS.update(1);
         //await ƒS.Character.animate(characters.Helene, characters.Helene.pose.happy, ghostAnimation());
-        await ƒS.Speech.tell(characters.Helene, text.Helene.T0000);
-        await ƒS.Speech.tell(characters.Helene, text.Helene.T0001);
-        await ƒS.Speech.tell(characters.Helene, text.Helene.T0002);
-        await ƒS.Character.hide(characters.Helene);
+        await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0000);
+        await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0001);
+        await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0002);
+        await ƒS.Character.hide(characters.Amelie);
 
         let dialogueElement = await ƒS.Menu.getInput(dialog, "userOptions");
 
         switch(dialogueElement) {
             case dialog.O1:
                 console.log("Option 1");
-                await ƒS.Speech.tell(characters.Helene, text.Helene.T0004);
+                await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0004);
                 break;
             case dialog.O2:
                 console.log("Option 2");
-                await ƒS.Speech.tell(characters.Helene, text.Helene.T0003);
+                await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0003);
                 break;
             case dialog.O3:
                 console.log("Option 3"); 
-                await ƒS.Speech.tell(characters.Helene, text.Helene.T0004);
+                await ƒS.Speech.tell(characters.Amelie, text.Amelie.T0004);
                 break;
         }
 
