@@ -13,15 +13,17 @@ html, body {
 }
 
 scene {
-    width: 1280px;
-    height: 720px;
+    width: 1920px;
+    height: 1080px;
     display: inline-block;
-    position: static;
+    position: absolute;
 }
 
 canvas {
-    min-width: 100%;
+    width: 100%;
     height: 100%;
+    left: 0;
+    position: absolute;
 }
 
 /* SPLASH SCREEN */
@@ -129,7 +131,7 @@ speech {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.863);
+    background-color: rgba(0, 0, 0, 0.808);
     height: 15%;
 }
 
@@ -147,4 +149,51 @@ speech name {
     display: block;
     color: rgb(164, 119, 190);
     margin-bottom: 10px;
+}
+
+speech input {
+    padding: 5px;
+    margin-top: 15px;
+}
+
+speech input:focus {
+    outline: none;
+}
+
+/* INVENTORY */
+
+dialog[type="inventory"] {
+    color: rgb(38, 120, 122);
+    width: 50%;
+    border: none;
+    /*border: 2px solid; */
+    background-color: rgba(216, 216, 216, 0.808);
+    font-family: 'KoHo', sans-serif;
+}
+  
+dialog[type="inventory"] > ul {
+}
+  
+dialog[type="inventory"] > ul > li {
+    display: grid;
+    grid-template-columns: 30% 10% 35% 25%;
+    height: 10vw;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+dialog[type="inventory"] > ul > li > name { 
+
+}
+
+dialog[type="inventory"] > ul > li > amount { 
+    
+}
+
+dialog[type="inventory"] > ul > li > description { 
+    
+}
+
+dialog[type="inventory"] > ul > li > img { 
+    
 }

@@ -49,6 +49,10 @@ namespace Template {
             name: "University",
             background: "Images/Backgrounds/university.png"
         },
+        home: {
+            name: "Home",
+            background: "Images/Backgrounds/"
+        },
     };
 
     export let characters = {
@@ -58,23 +62,38 @@ namespace Template {
         protagonist: {
             name: "",
         },
-        Helene: {
-            name: "Helene",
+        Amelie: {
+            name: "Amelie",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
-                happy: "Images/Characters/aisaka.png",
+                happy: "Images/Characters/Amelie.png",
                 upset: "pfad",
             },
         },
-        Lily: {
-            name: "Lily",
+        Nora: {
+            name: "Nora",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "Images/Characters/Lily.png",
+                good: "Images/Characters/Nora.png",
             },
         },
     };
+
+    export let items = {
+        lipstick: {
+            name: "Lipstick",
+            description: "To paint your lips",
+            image: "Images/Items/blobOG.png",
+            static: true  //if true: not consumable
+        },
+        lolly: {
+            name: "super duper klasse lolly",
+            description: "To paint your lips",
+            image: "Images/Items/blobOG.png",
+            static: true  //if true: not consumable
+        }
+    }
 
     // ANIMATION ----------------------------------------------
 
@@ -175,6 +194,9 @@ namespace Template {
                     gameMenu.open();
                     menuIsOpen = true;
                 }
+                break;
+            case ƒ.KEYBOARD_CODE.I:
+                await ƒS.Inventory.open();
                 break;
         }
     }

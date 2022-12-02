@@ -47,6 +47,10 @@ var Template;
             name: "University",
             background: "Images/Backgrounds/university.png"
         },
+        home: {
+            name: "Home",
+            background: "Images/Backgrounds/"
+        },
     };
     Template.characters = {
         narrator: {
@@ -55,22 +59,36 @@ var Template;
         protagonist: {
             name: "",
         },
-        Helene: {
-            name: "Helene",
+        Amelie: {
+            name: "Amelie",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
-                happy: "Images/Characters/aisaka.png",
+                happy: "Images/Characters/Amelie.png",
                 upset: "pfad",
             },
         },
-        Lily: {
-            name: "Lily",
+        Nora: {
+            name: "Nora",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "Images/Characters/Lily.png",
+                good: "Images/Characters/Nora.png",
             },
         },
+    };
+    Template.items = {
+        lipstick: {
+            name: "Lipstick",
+            description: "To paint your lips",
+            image: "Images/Items/blobOG.png",
+            static: true //if true: not consumable
+        },
+        lolly: {
+            name: "super duper klasse lolly",
+            description: "To paint your lips",
+            image: "Images/Items/blobOG.png",
+            static: true //if true: not consumable
+        }
     };
     // ANIMATION ----------------------------------------------
     function ghostAnimation() {
@@ -167,6 +185,9 @@ var Template;
                     menuIsOpen = true;
                 }
                 break;
+            case Template.ƒ.KEYBOARD_CODE.I:
+                await Template.ƒS.Inventory.open();
+                break;
         }
     }
     // SCENES ------------------------------------------
@@ -191,13 +212,20 @@ var Template;
         console.log("intro scene: starting");
         // SPEECH
         let text = {
-            Lily: {
+            Nora: {
                 T0000: "Das ist Text Nummer 1.",
                 T0001: "Das hier ist der zweite Text.",
-                T0002: "Hier kommt die Nummer drei.",
+                T0002: "Wie ist dein Name? <br>",
                 T0003: "Beruhig dich mal.",
                 T0004: "LOL OK",
             },
+            Friend: {
+                F0000: "Hey!"
+            },
+            Crush: {
+                C0000: "Sehen wir uns dann später?",
+                C0001: "Ich hole dich um 7 ab."
+            }
         };
         let dialog = {
             O1: "Was ist mit Nummer 4? Was ist mit Nummer 4?",
@@ -207,36 +235,106 @@ var Template;
         Template.ƒS.Speech.hide();
         await Template.ƒS.Location.show(Template.locations.university);
         //ƒS.Sound.fade(sound.dystopia, 0.5, 2, true);
-        await Template.ƒS.update(Template.transitions.cloud.duration, Template.transitions.cloud.alpha, Template.transitions.cloud.edge);
-        await Template.ƒS.Character.show(Template.characters.Lily, Template.characters.Lily.pose.good, Template.ƒS.positionPercent(70, 130));
+        //await ƒS.update(transitions.cloud.duration, transitions.cloud.alpha, transitions.cloud.edge);
+        await Template.ƒS.Character.show(Template.characters.Nora, Template.characters.Nora.pose.good, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update(1);
         //await ƒS.Character.animate(characters.Helene, characters.Helene.pose.happy, ghostAnimation());
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0000);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0002);
         // Name Input
         let name = await Template.ƒS.Speech.getInput();
         Template.dataForSave.nameProtagonist = name;
         Template.characters.protagonist.name = name;
-        await Template.ƒS.Speech.tell(Template.characters.Lily, "Hey " + Template.characters.protagonist.name + ". Das ist ein toller Name.");
-        await Template.ƒS.Character.hide(Template.characters.Lily);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, "Hey " + Template.characters.protagonist.name + ". Das ist ein toller Name.");
+        await Template.ƒS.Character.show(Template.characters.Amelie, Template.characters.Amelie.pose.happy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, "Hallo!");
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, "Wie gehts?");
+        Template.ƒS.Inventory.add(Template.items.lipstick);
+        Template.ƒS.Inventory.add(Template.items.lolly);
+        Template.ƒS.Inventory.open();
+        await Template.ƒS.Character.hide(Template.characters.Nora);
         let dialogueElement = await Template.ƒS.Menu.getInput(dialog, "userOptions");
         switch (dialogueElement) {
             case dialog.O1:
                 console.log("Option 1");
-                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0004);
                 break;
             case dialog.O2:
                 console.log("Option 2");
-                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0003);
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0003);
                 break;
             case dialog.O3:
                 console.log("Option 3");
-                await Template.ƒS.Speech.tell(Template.characters.Lily, text.Lily.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0004);
+                break;
+        }
+        Template.ƒS.Speech.clear();
+        Template.ƒS.Speech.hide();
+    }
+    Template.university = university;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function home() {
+        console.log("home scene: starting");
+        // SPEECH
+        let text = {
+            Nora: {
+                T0000: "Schnell, so viel Zeit habe ich nicht mehr",
+                T0001: "Was soll ich anziehen?",
+                T0002: "Das sieht gut aus!",
+                T0003: "Lass uns gehen",
+                T0004: "Oh, es klingelt!"
+            },
+            Crush: {
+                C0000: "Hey, bist du bereit?",
+                C0001: "Dann lass uns los!"
+            }
+        };
+        let dialog = {
+            O1: "Kleid",
+            O2: "Hose",
+            O3: "Etwas ganz anderes."
+        };
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.university);
+        //ƒS.Sound.fade(sound.dystopia, 0.5, 2, true);
+        //await ƒS.update(transitions.cloud.duration, transitions.cloud.alpha, transitions.cloud.edge);
+        await Template.ƒS.Character.show(Template.characters.Nora, Template.characters.Nora.pose.good, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update(1);
+        //await ƒS.Character.animate(characters.Helene, characters.Helene.pose.happy, ghostAnimation());
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0002);
+        // Name Input
+        let name = await Template.ƒS.Speech.getInput();
+        Template.dataForSave.nameProtagonist = name;
+        Template.characters.protagonist.name = name;
+        await Template.ƒS.Speech.tell(Template.characters.Nora, "Hey " + Template.characters.protagonist.name + ". Das ist ein toller Name.");
+        await Template.ƒS.Character.show(Template.characters.Amelie, Template.characters.Amelie.pose.happy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, "Hallo!");
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, "Wie gehts?");
+        await Template.ƒS.Character.hide(Template.characters.Nora);
+        let dialogueElement = await Template.ƒS.Menu.getInput(dialog, "userOptions");
+        switch (dialogueElement) {
+            case dialog.O1:
+                console.log("Option 1");
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0003);
+                break;
+            case dialog.O2:
+                console.log("Option 2");
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0003);
+                break;
+            case dialog.O3:
+                console.log("Option 3");
+                await Template.ƒS.Speech.tell(Template.characters.Nora, text.Nora.T0003);
                 break;
         }
     }
-    Template.university = university;
+    Template.home = home;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -251,7 +349,7 @@ var Template;
         console.log("first scene: starting");
         // SPEECH
         let text = {
-            Helene: {
+            Amelie: {
                 T0000: "Das ist Text Nummer 1.",
                 T0001: "Das hier ist der zweite Text.",
                 T0002: "Hier kommt die Nummer drei.",
@@ -268,26 +366,26 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.nightcity);
         //ƒS.Sound.fade(sound.dystopia, 0.5, 2, true);
         await Template.ƒS.update(Template.transitions.cloud.duration, Template.transitions.cloud.alpha, Template.transitions.cloud.edge);
-        await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Character.show(Template.characters.Amelie, Template.characters.Amelie.pose.happy, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update(1);
         //await ƒS.Character.animate(characters.Helene, characters.Helene.pose.happy, ghostAnimation());
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0000);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);
-        await Template.ƒS.Character.hide(Template.characters.Helene);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0002);
+        await Template.ƒS.Character.hide(Template.characters.Amelie);
         let dialogueElement = await Template.ƒS.Menu.getInput(dialog, "userOptions");
         switch (dialogueElement) {
             case dialog.O1:
                 console.log("Option 1");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0004);
                 break;
             case dialog.O2:
                 console.log("Option 2");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0003);
+                await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0003);
                 break;
             case dialog.O3:
                 console.log("Option 3");
-                await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
+                await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Amelie.T0004);
                 break;
         }
     }
@@ -308,11 +406,11 @@ var Template;
         Template.ƒS.Speech.hide();
         await Template.ƒS.Location.show(Template.locations.theathre);
         await Template.ƒS.update(Template.transitions.wet.duration, Template.transitions.wet.alpha, Template.transitions.wet.edge);
-        await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(20, 100));
+        await Template.ƒS.Character.show(Template.characters.Amelie, Template.characters.Amelie.pose.happy, Template.ƒS.positionPercent(20, 100));
         await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0000);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0002);
     }
     Template.secondScene = secondScene;
 })(Template || (Template = {}));
@@ -338,19 +436,19 @@ var Template;
         Template.ƒS.Sound.play(Template.sound.supermarket_packing, 1, true);
         await Template.ƒS.Location.show(Template.locations.supermarket);
         Template.ƒS.Sound.fade(Template.sound.conversation, 0.5, 1, true);
-        await Template.ƒS.Character.show(Template.characters.Helene, Template.characters.Helene.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Character.show(Template.characters.Amelie, Template.characters.Amelie.pose.happy, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0001);
-        await Template.ƒS.Character.animate(Template.characters.Lily, Template.characters.Lily.pose.good, Template.slideInAnimation());
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Kassiererin.T0001);
+        await Template.ƒS.Character.animate(Template.characters.Nora, Template.characters.Nora.pose.good, Template.slideInAnimation());
         //await ƒS.Character.show(characters.Lily, characters.Lily.pose.good, ƒS.positionPercent(30, 100));
         //await ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0003);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0003);
-        await Template.ƒS.Speech.tell(Template.characters.Lily, text.Kassiererin.T0004);
-        await Template.ƒS.Speech.tell(Template.characters.Helene, text.Helene.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Kassiererin.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Kassiererin.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.Nora, text.Kassiererin.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.Amelie, text.Helene.T0004);
     }
     Template.thirdScene = thirdScene;
 })(Template || (Template = {}));

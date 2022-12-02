@@ -43,6 +43,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        home: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
         narrator: {
@@ -51,7 +55,7 @@ declare namespace Template {
         protagonist: {
             name: string;
         };
-        Helene: {
+        Amelie: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
@@ -60,12 +64,26 @@ declare namespace Template {
                 upset: string;
             };
         };
-        Lily: {
+        Nora: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
                 good: string;
             };
+        };
+    };
+    let items: {
+        lipstick: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        lolly: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
         };
     };
     function ghostAnimation(): ƒS.AnimationDefinition;
@@ -74,6 +92,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function university(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function home(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
