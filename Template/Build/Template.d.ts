@@ -3,6 +3,9 @@ declare namespace Template {
     export import ƒS = FudgeStory;
     let dataForSave: {
         nameProtagonist: string;
+        pronounsProtagonist: string;
+        crush: string;
+        dress: string;
     };
     let transitions: {
         cloud: {
@@ -39,11 +42,25 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        black: {
+            name: string;
+            background: string;
+        };
+        intro: {
+            name: string;
+            background: string;
+        };
         university: {
             name: string;
             background: string;
         };
         home: {
+            name: string;
+            background: string;
+        };
+    };
+    let sequences: {
+        black: {
             name: string;
             background: string;
         };
@@ -54,6 +71,34 @@ declare namespace Template {
         };
         protagonist: {
             name: string;
+            look: {
+                one: {
+                    one: string;
+                };
+                two: {
+                    one: string;
+                };
+                three: {
+                    one: string;
+                };
+            };
+            pronouns: string;
+        };
+        Nora: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                good: string;
+            };
+        };
+        Crush: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                angry: string;
+                happy: string;
+                upset: string;
+            };
         };
         Amelie: {
             name: string;
@@ -64,11 +109,22 @@ declare namespace Template {
                 upset: string;
             };
         };
-        Nora: {
+        Enzo: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                good: string;
+                angry: string;
+                happy: string;
+                upset: string;
+            };
+        };
+        Jill: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                angry: string;
+                happy: string;
+                upset: string;
             };
         };
     };
@@ -86,6 +142,7 @@ declare namespace Template {
             static: boolean;
         };
     };
+    function getCrush(_name: string): void;
     function ghostAnimation(): ƒS.AnimationDefinition;
     function getAnimation(): ƒS.AnimationDefinition;
     function slideInAnimation(): ƒS.AnimationDefinition;

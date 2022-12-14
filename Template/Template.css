@@ -29,7 +29,7 @@ canvas {
 /* SPLASH SCREEN */
 
 dialog[type=splash] {
-    background-image: url("Images/Backgrounds/bench.png");
+    background-image: url("Images/Backgrounds/newsplash.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -41,13 +41,12 @@ dialog[type=splash] {
 }
 
 dialog[type="splash"] > div {
-    width: 50%;
-    background-color: white;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.548);
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     margin-top: 5vh;
     border-radius: 15px;
-    opacity: 60%;
 }
 
 dialog[type="splash"] > div > div {
@@ -58,10 +57,10 @@ dialog[type="splash"] > div > div {
 }
 
 #FudgeStoryLogo {
-    width: 50%;
+    width: 40%;
     display: block;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     border-radius: 15px;
 }
 
@@ -116,14 +115,53 @@ dialog[type="splash"] > div > div {
     margin: 10px;
 }
 
-.userOptions button:hover {
+.userOptions button:hover, .userOptionsFace button:hover {
     background-color: #999999; 
     color: white;
-  }
+}
+
+.userOptionsFace {
+    background-color: rgba(68, 60, 68, 0.63);
+    border: none;
+    text-align: center;
+    padding: 30px;
+    backdrop-filter: blur(4px);
+}
+
+.userOptionsFace button {
+    background-color: #ffffff; 
+    border: none;
+    color: black;
+    padding: 10px;
+    font-family: Lucida Sans, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    width: 250px;
+    height: 250px;
+}
+
+.userOptionsFace button:nth-child(1) {
+    background-image: url("Images/Characters/Icons/FayeFun.png");
+    background-size: 250px 250px;
+    z-index: 99; 
+}
+
+.userOptionsFace button:nth-child(2) {
+    background-image: url("Images/Characters/Icons/EnzoFun.png");
+    background-size: 250px 250px;
+    z-index: 99; 
+}
+
+.userOptionsFace button:nth-child(3){
+    background-image: url("Images/Characters/Icons/CalFun.png");
+    background-size: 250px 250px;
+    z-index: 99; 
+}
 
 /* SPEECH */
 
-speech {
+#speech {
     position: absolute;
     display: block;
     padding: 20px;
@@ -145,7 +183,8 @@ speech content {
   
 speech name {
     font-size: 2vmin;
-    font-family: 'DePixel', sans-serif;
+    font-family: Lucida Sans, Helvetica, Arial, sans-serif;
+    font-weight: bolder;
     display: block;
     color: rgb(164, 119, 190);
     margin-bottom: 10px;
@@ -158,6 +197,23 @@ speech input {
 
 speech input:focus {
     outline: none;
+}
+
+.shake {
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
 }
 
 /* INVENTORY */
