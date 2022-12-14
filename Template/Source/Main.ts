@@ -4,7 +4,12 @@ namespace Template {
 
     console.log("FudgeStory template starting");
 
-    export let dataForSave = { nameProtagonist: "" };
+    export let dataForSave = { 
+        nameProtagonist: "", 
+        pronounsProtagonist: "", 
+        crush: "",
+        dress: ""
+    };
     export let transitions = {
         cloud: {
             duration: 3,
@@ -45,15 +50,30 @@ namespace Template {
             name: "Supermarkt",
             background: "Images/Backgrounds/supermarkt_big.jpg",
         },
+        black: {
+            name: "Black",
+            background: "Images/Backgrounds/black.png"
+        },
+        intro: {
+            name: "Intro",
+            background: "Images/Backgrounds/splash.png"
+        },
         university: {
             name: "University",
             background: "Images/Backgrounds/university.png"
         },
         home: {
             name: "Home",
-            background: "Images/Backgrounds/"
+            background: "Images/Backgrounds/home.png"
         },
     };
+
+    export let sequences = {
+        black: {
+            name: "Black", 
+            background: "Images/Backgrounds/black.png"
+        }
+    }
 
     export let characters = {
         narrator: {
@@ -61,23 +81,66 @@ namespace Template {
         },
         protagonist: {
             name: "",
+            look: {
+                one: {
+                    one: ""
+                },
+                two: {
+                    one: ""
+                },
+                three: {
+                    one: ""
+                }
+            },
+            pronouns: ""
         },
+
+        Nora: {
+            name: "Emma",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                good: "Images/Characters/Emma1.png",
+            },
+        },
+        // START CRUSH LIST
+        Crush: {
+            name: "",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: "",
+                happy: "",
+                upset: "",
+            }
+        },        
         Amelie: {
-            name: "Amelie",
+            name: "Faye",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
-                happy: "Images/Characters/Amelie.png",
+                happy: "Images/Characters/FayeNew.png",
                 upset: "pfad",
             },
         },
-        Nora: {
-            name: "Nora",
+        Enzo: {
+            name: "Enzo",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                good: "Images/Characters/Nora.png",
-            },
-        },
+                angry: "pfaddesbildes",
+                happy: "Images/Characters/EnzoNew.png",
+                upset: "pfad",
+            }
+        }, 
+        Jill: {
+            name: "Jill",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: "pfaddesbildes",
+                happy: "Images/Characters/Jill.png",
+                upset: "pfad",
+            }
+        },  
+        // END CRUSH LIST       
+
     };
 
     export let items = {
@@ -95,6 +158,16 @@ namespace Template {
         }
     }
 
+    // HELPER FUNCTION
+
+    export function getCrush(_name: string): void {
+        if (_name == "Amelie")
+            characters.Crush = characters.Amelie;
+        else if (_name == "Enzo")
+            characters.Crush = characters.Enzo;
+        else if (_name == "Jill")
+            characters.Crush = characters.Jill;
+    }
     // ANIMATION ----------------------------------------------
 
     export function ghostAnimation(): ƒS.AnimationDefinition {
@@ -138,7 +211,7 @@ namespace Template {
                 color: ƒS.Color.CSS("white", 0),
             },
             end: {
-                translation: ƒS.positionPercent(30, 100),
+                translation: ƒS.positionPercent(50, 100),
                 color: ƒS.Color.CSS("white", 1),
             },
             duration: 2,
@@ -207,10 +280,13 @@ namespace Template {
     function start(_event: Event): void {
         gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenuCSSClass");
         buttonFunctionalities("Close");
+
         // scene hierarchy
         let scenes: ƒS.Scenes = [
             //{ scene: firstScene, name: "first scene" },
             { scene: university, name: "intro scene" },
+            { scene: home, name: "home scene" },
+            { scene: thirdScene, name: "third scene", id: "thirdScene" },
         ];
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");
