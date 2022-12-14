@@ -37,5 +37,7 @@ namespace Template {
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0003);
         await ƒS.Speech.tell(characters.Nora, text.Kassiererin.T0004);
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0004);
+        ƒS.Inventory.add(items.lipstick);
+        ƒS.Inventory.add(items.lolly);
     }
 }
