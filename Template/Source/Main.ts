@@ -66,6 +66,34 @@ namespace Template {
             name: "Home",
             background: "Images/Backgrounds/home.png"
         },
+        mansion_driveway: {
+            name: "Mansion",
+            background: "Images/Backgrounds/mansion_driveway.png"
+        },
+        mansion_closer: {
+            name: "Mansion",
+            background: "Images/Backgrounds/mansion_closer.png"
+        },
+        mansion_front: {
+            name: "Mansion",
+            background: "Images/Backgrounds/mansion_front.png"
+        },
+        lobby_entrance: {
+            name: "Lobby",
+            background: "Images/Backgrounds/lobby_entrance.png"
+        },
+        livingroom: {
+            name: "Living Room",
+            background: "Images/Backgrounds/livingroom.png"
+        },
+        kitchen: {
+            name: "Kitchen",
+            background: "Images/Backgrounds/kitchen.png"
+        },
+        bathroom: {
+            name: "Bathroom",
+            background: "Images/Backgrounds/bathroom.png"
+        },
     };
 
     export let sequences = {
@@ -95,7 +123,7 @@ namespace Template {
             pronouns: ""
         },
 
-        Nora: {
+        Emma: {
             name: "Emma",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
@@ -130,8 +158,8 @@ namespace Template {
                 upset: "pfad",
             }
         }, 
-        Jill: {
-            name: "Jill",
+        Cal: {
+            name: "Cal",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "pfaddesbildes",
@@ -139,36 +167,58 @@ namespace Template {
                 upset: "pfad",
             }
         },  
-        // END CRUSH LIST       
+        // END CRUSH LIST      
+        // GUEST LIST
+        Clara: {
+            name: "Clara",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: "pfaddesbildes",
+                happy: "Images/Characters/Clara.png",
+                upset: "pfad",
+            }
+        },  
+
+        // MISC
+        Doorman: {
+            name: "Doorman",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: "pfaddesbildes",
+                happy: "Images/Characters/Doorman.png",
+                upset: "pfad",
+            }
+        }, 
 
     };
 
     export let items = {
-        lipstick: {
-            name: "Lipstick",
-            description: "To paint your lips",
-            image: "Images/Items/blobOG.png",
+        pencil: {
+            name: "Pencil",
+            description: "Easy to erase",
+            image: "Images/Items/Pencil.png",
             static: true  //if true: not consumable
         },
-        lolly: {
-            name: "super duper klasse lolly",
-            description: "To paint your lips",
-            image: "Images/Items/blobOG.png",
+        earpods: {
+            name: "Earpods",
+            description: "Listen to music without the cables",
+            image: "Images/Items/Earpods.png",
             static: true  //if true: not consumable
         }
     }
 
-    // HELPER FUNCTION
+    // HELPER FUNCTIONS
 
     export function getCrush(_name: string): void {
         if (_name == "Amelie")
             characters.Crush = characters.Amelie;
         else if (_name == "Enzo")
             characters.Crush = characters.Enzo;
-        else if (_name == "Jill")
-            characters.Crush = characters.Jill;
+        else if (_name == "Cal")
+            characters.Crush = characters.Cal;
     }
-    // ANIMATION ----------------------------------------------
+
+    // ANIMATIONS ----------------------------------------------
 
     export function ghostAnimation(): ƒS.AnimationDefinition {
         return {
@@ -218,6 +268,22 @@ namespace Template {
             playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
+
+    export function slideToSide(_startPos: number, _endPos: number): ƒS.AnimationDefinition {
+        return {
+            start: {
+                translation: ƒS.positionPercent(_startPos, 100),
+                color: ƒS.Color.CSS("white", 1),
+            },
+            end: {
+                translation: ƒS.positionPercent(_endPos, 100),
+                color: ƒS.Color.CSS("white", 1),
+            },
+            duration: 2,
+            playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+
 
     // MENU SHORTCUTS ----------------------------------------
 
@@ -284,9 +350,10 @@ namespace Template {
         // scene hierarchy
         let scenes: ƒS.Scenes = [
             //{ scene: firstScene, name: "first scene" },
-            { scene: university, name: "intro scene" },
-            { scene: home, name: "home scene" },
-            { scene: thirdScene, name: "third scene", id: "thirdScene" },
+            { scene: one_university, name: "intro scene" },
+            { scene: two_partyEntrance, name: "party entrance" },
+            { scene: two_livingroom, name: "living room" }
+            //{ scene: thirdScene, name: "third scene", id: "thirdScene" },
         ];
 
         let uiElement: HTMLElement = document.querySelector("[type=interface]");
