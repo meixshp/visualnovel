@@ -219,7 +219,7 @@ speech input:focus {
 /* INVENTORY */
 
 dialog[type="inventory"] {
-    color: rgb(38, 120, 122);
+    color: black;
     width: 50%;
     border: none;
     /*border: 2px solid; */
@@ -231,25 +231,36 @@ dialog[type="inventory"] > ul {
 }
   
 dialog[type="inventory"] > ul > li {
+    padding-left: 20px;
     display: grid;
-    grid-template-columns: 30% 10% 35% 25%;
-    height: 10vw;
+    grid-template-columns: 25% 10% 35% 25%;
+    grid-template-rows: 100px;
+    max-height: 10vh;
     list-style-type: none;
     margin-bottom: 10px;
+    font-size: 1.7vmin;
+    align-items: center;
 }
 
-dialog[type="inventory"] > ul > li > name { 
-
-}
-
-dialog[type="inventory"] > ul > li > amount { 
-    
-}
-
-dialog[type="inventory"] > ul > li > description { 
-    
+dialog[type="inventory"] > ul > li:hover {
+    background-color: rgba(122, 122, 122, 0.808);
+    color: rgb(221, 221, 221)
 }
 
 dialog[type="inventory"] > ul > li > img { 
-    
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 0;
+    position: relative;
+}
+
+dialog[type="inventory"] > button { 
+    background-color: #ffffff; 
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
