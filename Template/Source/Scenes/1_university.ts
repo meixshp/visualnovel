@@ -1,5 +1,5 @@
 namespace Template {
-    export async function university(): ƒS.SceneReturn {
+    export async function one_university(): ƒS.SceneReturn {
         console.log("intro scene: starting");
 
         // SPEECH
@@ -10,7 +10,7 @@ namespace Template {
                 N0002: ". Which pronouns do you use?",
                 N0003: "Perfect, thank you.",
                 N0004: "I hope you will enjoy this visual novel as a <strong>Nox Ford</strong> student. See you on the other side!",
-                N0005: "You end up trying to sneak a peak behind you. But you don't remain unseen. Shortly after, your crush walks over to you.",
+                N0005: "You end up trying to sneak a peek behind you. But you don't remain unseen. Shortly after, your crush walks over to you.",
                 N0006: "Who out of the group is your crush?",
                 N0007: "You get home by 5 o'clock. You have about an hour to get ready.",
                 N0008: "As you proceed getting ready, your doorbell rings. Is it 6 o'clock already?",
@@ -29,7 +29,7 @@ namespace Template {
                 T0007: "! Yeah. What.. is it exactly we're doing there again?",
                 T0008: "This high-class idea of a date sure makes me curious, yeah.",
                 T0009: "Alright. See you then, ",
-                T0010: "Oh boy. A silent auction? I've never been to one. Well, I'm not exactly their clientel..",
+                T0010: "Oh boy. A silent auction? I've never been to one. Well, I'm not exactly their clientele..",
                 T0011: "But maybe that's going to make it even more interesting!",
                 T0012: "Now all I gotta do is get home and freshen up.",
                 T0013: "Ok... let me go shower real quick.",
@@ -84,11 +84,11 @@ namespace Template {
         };
 
         let choicesTakeItemsWithMe = {
-            O1: "?",
+            O1: "Pencil",
             O2: "Earpods",
             O3: "???"
         }
-
+        
         ƒS.Speech.hide();
         await ƒS.Location.show(locations.intro);
         await ƒS.update(2);        
@@ -147,18 +147,18 @@ namespace Template {
         speechBox.classList.remove("shake");
         //await ƒS.Character.show(characters.Nora, characters.Nora.pose.good, ƒS.positionPercent(50, 100));
         //await ƒS.update(1);
-        await ƒS.Character.animate(characters.Nora, characters.Nora.pose.good, slideInAnimation());
+        await ƒS.Character.animate(characters.Emma, characters.Emma.pose.good, slideInAnimation());
         await ƒS.Speech.tell("You", text.Protagonist.T0003);
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0001);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0001);
         await ƒS.Speech.tell("You", text.Protagonist.T0004);
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0002);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0002);
         await ƒS.Speech.tell("You", text.Protagonist.T0005);
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0003);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0003);
         await ƒS.Speech.tell("You", text.Protagonist.T0006);
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0004);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0004);
         ƒS.Speech.clear();
         await ƒS.update(2);
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0005);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0005);
         ƒS.Speech.clear();
         await ƒS.update(1);
         await ƒS.Speech.tell(undefined, text.Narrator.N0005);
@@ -181,15 +181,15 @@ namespace Template {
                 break;
             case choicesCrush.O3:
                 console.log("Option 3"); 
-                dataForSave.crush = "Jill";
-                characters.Crush = characters.Jill;
+                dataForSave.crush = "Cal";
+                characters.Crush = characters.Cal;
                 console.log("Crush: " + characters.Crush.name);
                 break;
         }
 
-        await ƒS.Speech.tell(characters.Nora, text.Friend.F0006);
+        await ƒS.Speech.tell(characters.Emma, text.Friend.F0006);
         ƒS.Speech.clear();
-        await ƒS.Character.hide(characters.Nora);
+        await ƒS.Character.hide(characters.Emma);
         await ƒS.update(1);
         await ƒS.Character.show(characters.Crush, characters.Crush.pose.happy, ƒS.positionPercent(50, 100));
         await ƒS.update(1);
@@ -251,13 +251,17 @@ namespace Template {
 
         switch(choiceTakeItemWithMe) {
             case choicesTakeItemsWithMe.O1:
-                console.log("Lipstick");
+                console.log("Pencil");
+                ƒS.Inventory.add(items.pencil);
+                ƒS.Inventory.add(items.earpods);
                 break;
             case choicesTakeItemsWithMe.O2:
                 console.log("Earpods");
+                ƒS.Inventory.add(items.earpods);
                 break;
             case choicesTakeItemsWithMe.O3:
                 console.log(""); 
+                ƒS.Inventory.add(items.earpods);
                 break;
         }
         await ƒS.Speech.tell("You", text.Protagonist.T0021);

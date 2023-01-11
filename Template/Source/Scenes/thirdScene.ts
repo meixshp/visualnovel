@@ -26,18 +26,18 @@ namespace Template {
         ƒS.Sound.fade(sound.conversation, 0.5, 1, true);
         await ƒS.Character.show(characters.Amelie, characters.Amelie.pose.happy, ƒS.positionPercent(70, 100));
         await ƒS.update(1);
-        await ƒS.Speech.tell(characters.Nora, text.Kassiererin.T0001);
-        await ƒS.Character.animate(characters.Nora, characters.Nora.pose.good, slideInAnimation());
+        await ƒS.Speech.tell(characters.Emma, text.Kassiererin.T0001);
+        await ƒS.Character.animate(characters.Emma, characters.Emma.pose.good, slideInAnimation());
         //await ƒS.Character.show(characters.Lily, characters.Lily.pose.good, ƒS.positionPercent(30, 100));
         //await ƒS.update(1);
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0001);
-        await ƒS.Speech.tell(characters.Nora, text.Kassiererin.T0002);
+        await ƒS.Speech.tell(characters.Emma, text.Kassiererin.T0002);
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0002);
-        await ƒS.Speech.tell(characters.Nora, text.Kassiererin.T0003);
+        await ƒS.Speech.tell(characters.Emma, text.Kassiererin.T0003);
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0003);
-        await ƒS.Speech.tell(characters.Nora, text.Kassiererin.T0004);
+        await ƒS.Speech.tell(characters.Emma, text.Kassiererin.T0004);
         await ƒS.Speech.tell(characters.Amelie, text.Helene.T0004);
-        ƒS.Inventory.add(items.lipstick);
-        ƒS.Inventory.add(items.lolly);
+        ƒS.Inventory.add(items.pencil);
+        ƒS.Inventory.add(items.pencil);
     }
 }

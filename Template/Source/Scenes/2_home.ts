@@ -84,12 +84,15 @@ namespace Template {
         switch(choiceTakeItemWithMe) {
             case choicesTakeItemsWithMe.O1:
                 console.log("Lipstick");
+                ƒS.Inventory.add(items.pencil);
                 break;
             case choicesTakeItemsWithMe.O2:
                 console.log("Earpods");
+                ƒS.Inventory.add(items.pencil);
                 break;
             case choicesTakeItemsWithMe.O3:
                 console.log(""); 
+                ƒS.Inventory.add(items.pencil);
                 break;
         }
         await ƒS.Speech.tell("You", text.Protagonist.T0008);
