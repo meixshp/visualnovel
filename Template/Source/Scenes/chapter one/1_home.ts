@@ -1,5 +1,5 @@
 namespace Template {
-    export async function home(): ƒS.SceneReturn {
+    export async function one_home(): ƒS.SceneReturn {
         console.log("home scene: starting");
 
         // SPEECH
@@ -37,13 +37,14 @@ namespace Template {
         };
 
         let choicesTakeItemsWithMe = {
-            O1: "?",
+            O1: "Pencil",
             O2: "Earpods",
             O3: "???"
         }
 
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        characters.protagonist.pronouns = dataForSave.pronounsProtagonist;
         getCrush(dataForSave.crush);
         
         await ƒS.Location.show(locations.home);
@@ -52,7 +53,7 @@ namespace Template {
         //await ƒS.update(transitions.cloud.duration, transitions.cloud.alpha, transitions.cloud.edge);
         await ƒS.Speech.tell(undefined, text.Narrator.N0000);
         await ƒS.Speech.tell("You", text.Protagonist.T0000);
-        await ƒS.update(2);
+        await ƒS.Speech.tell(undefined, "...");
         await ƒS.Speech.tell("You", text.Protagonist.T0001);
         await ƒS.Speech.tell("You", text.Protagonist.T0002);
         let choiceDress = await ƒS.Menu.getInput(choicesDress, "userOptions");
@@ -83,7 +84,7 @@ namespace Template {
 
         switch(choiceTakeItemWithMe) {
             case choicesTakeItemsWithMe.O1:
-                console.log("Lipstick");
+                console.log("Pencil");
                 ƒS.Inventory.add(items.pencil);
                 break;
             case choicesTakeItemsWithMe.O2:

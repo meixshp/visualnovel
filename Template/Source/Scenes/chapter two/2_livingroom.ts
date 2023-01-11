@@ -1,6 +1,6 @@
 namespace Template {
     export async function two_livingroom(): ƒS.SceneReturn {
-        console.log("intro scene: starting");
+        console.log("chapter two: living room");
 
         // SPEECH
         let text = {

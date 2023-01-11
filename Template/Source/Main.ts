@@ -349,8 +349,12 @@ namespace Template {
 
         // scene hierarchy
         let scenes: ƒS.Scenes = [
-            //{ scene: firstScene, name: "first scene" },
-            { scene: one_university, name: "intro scene" },
+            
+            // CHAPTER ONE
+            { scene: one_university, name: "intro scene: meeting your crush" },
+            { scene: one_home, name: "crush picks you up at home" },
+
+             // CHAPTER TWO
             { scene: two_partyEntrance, name: "party entrance" },
             { scene: two_livingroom, name: "living room" }
             //{ scene: thirdScene, name: "third scene", id: "thirdScene" },
